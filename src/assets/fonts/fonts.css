@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "NEON";
+    src:url("./NEON.woff2") format("woff2"), /* IE9 Compat Modes */
+      url("./NEON.ttf") format("truetype"), /* Safari, Android, iOS */
+      url("./NEON.woff") format("woff"), /* Modern Browsers */
+      url("./NEON.eot"); /* Modern Browsers */
+    font-weight: normal;
+    font-style: normal;
+  }
