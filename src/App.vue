@@ -116,7 +116,7 @@ export default {
     toggle() {
       //Смена роута и background'a.
       document.querySelector('.bg').classList.toggle('bg_vision');
-      if(this.timeOfTheDay){
+      if (this.timeOfTheDay) {
         this.$router.push('neon');
       } else {
         this.$router.push('/');

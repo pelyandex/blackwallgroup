@@ -33,7 +33,6 @@ export default {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 1%;
   border: none;
-  animation: started 2s ease forwards;
   font-family: "NEON";
   color:rgb(255, 0, 147);
   text-shadow: 0 0 80px red,0 0 30px FireBrick,0 0 6px DarkRed;
