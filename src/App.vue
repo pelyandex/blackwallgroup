@@ -145,6 +145,8 @@ export default {
     },
   },
   mounted() {
+    // Я знаю, что правильно использовать обработчики в роутере, я их как-раз изучаю сейчас.
+    if (window.location.hash === '#/neon') { this.$router.push('/'); }
     this.boxie = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 'test'].sort(() => Math.random() - 0.5);
   },
 };
