@@ -1,24 +1,16 @@
-# blackwalled
+# Реализация игры "Пятнашки" на Vue.js + vue-router
 
-## Project setup
-```
-npm install
-```
+# https://pelyandex.github.io/blackwallgroup/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+> В проекте реализовано:
+ - Анимация при свайпе карточками
+ - Смена роута при изменении стилей, не изменяя текущий процесс игры
+ - Соотственно SPA со всеми вытекающими
+ - Оптимизация анимаций
+ > Возможно добавлю:
+ - Редирект при прямом переходе на второй роут (как разберусь, как это делается =) )
+ - Музыкальное сопровождение игры
+ - Продолжу оптимизацию анимаций
+ > " Инструкция по развертыванию проекта "
+- npm install
+- npm run serve
