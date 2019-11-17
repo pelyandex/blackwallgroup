@@ -27,8 +27,6 @@ export default {
   100%{transform: scale(1)}
 }
 .mainWindow {
-  width: 500px;
-  height: 500px;
   border: 1px solid;
   margin: 0 auto;
   display: grid;
@@ -36,6 +34,14 @@ export default {
   grid-gap: 1%;
   border: none;
   animation: started 2s ease forwards;
+    @media screen and (min-width: 451px) {
+    width: 500px;
+    height: 500px;
+  }
+    @media screen and (max-width: 450px) {
+      min-height: 300px;
+      width: 85%;
+  }
   .box {
     border-radius: 5%;
     border:2px solid;

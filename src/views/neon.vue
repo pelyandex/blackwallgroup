@@ -27,8 +27,6 @@ export default {
   100%{transform: scale(1)}
 }
 .mainWindow {
-  width: 500px;
-  height: 500px;
   border: 1px solid;
   margin: 0 auto;
   display: grid;
@@ -41,6 +39,14 @@ export default {
   text-shadow: 0 0 80px red,0 0 30px FireBrick,0 0 6px DarkRed;
   font-weight: bold;
   font-size: 45px;
+  @media screen and (min-width: 451px) {
+    width: 500px;
+    height: 500px;
+  }
+  @media screen and (max-width: 450px) {
+      min-height: 300px;
+      width: 85%;
+  }
   .box {
     border-radius: 5%;
     border:2px solid;
@@ -55,6 +61,7 @@ export default {
   }
   #test {
     background-image: url('../assets/hand.png');
+    background-repeat: no-repeat;
     background-size: cover;
   }
 }

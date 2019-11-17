@@ -108,29 +108,13 @@ export default {
         // Конец блока
         // Присвоение модифицированного блока => реактивному
           this.boxie = tempArr;
-        }, 300, $event, tempArr);
-        /* Проверка на выигрыш =>
-        (P.S.: Я решил задумываться о возможной победе, только когда в нижней строке собираются нужные числа.
-        Не исключаю, что есть проверка лучше, но я решил оставить всё так. ) */
-        if (this.boxie[15] === 'test' && this.boxie[14] === 15 && this.boxie[13] === 14 && this.boxie[12] === 13) {
-          // Рекурсивная функция для проверки условию
-          const recurs = function(arr1, arr2, n1 = 0, n2 = 0) {
-            let firstValue = arr1[n1];
-            let secondValue = arr2[n2];
-            if (firstValue === 'test' && secondValue === 'test'){
-              return "ТЫ ПОБЕДИЛ(а), С МЕНЯ ШАМПАНСКОЕ";
-            }
-            else if (firstValue === secondValue) {
-              return recurs(arr1, arr2, n1 + 1, n2 + 1)
-            }
-            return 'Осталось немного'
-          }
-          alert(recurs(this.boxie,this.gameOver, this.boxie[0], this.gameOver[0]));
-        }
+        // Проверка на выигрыш =>
+          this.checkwin();
+        }, 300, $event);
       }
     },
     toggle() {
-      //Смена роута и bg.
+      //Смена роута и background'a.
       document.querySelector('.bg').classList.toggle('bg_vision');
       if(this.timeOfTheDay){
         this.$router.push('neon');
@@ -138,7 +122,27 @@ export default {
         this.$router.push('/');
       }
       this.timeOfTheDay = !this.timeOfTheDay;
+    },
+    checkwin() {
+    /*
+    (P.S.: Я решил задумываться о возможной победе, только когда в нижней строке собираются нужные числа.
+    Не исключаю, что есть проверка лучше, но я решил оставить всё так. ) */
+    if (this.boxie[15] === 'test' && this.boxie[14] === 15 && this.boxie[13] === 14 && this.boxie[12] === 13) {
+      // Рекурсивная функция для проверки условия
+      const recurs = function(arr1, arr2, n1 = 0, n2 = 0) {
+        let firstValue = arr1[n1];
+        let secondValue = arr2[n2];
+        if (firstValue === 'test' && secondValue === 'test'){
+          return "ТЫ ПОБЕДИЛ(а), С МЕНЯ ШАМПАНСКОЕ";
+        }
+        else if (firstValue === secondValue) {
+          return recurs(arr1, arr2, n1 + 1, n2 + 1)
+        }
+        return 'Осталось немного'
+      }
+      alert(recurs(this.boxie,this.gameOver, this.boxie[0], this.gameOver[0]));
     }
+    },
   },
   mounted() {
     this.boxie = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 'test'].sort(() => Math.random() - 0.5);
@@ -152,6 +156,7 @@ export default {
   100%{opacity: 1;}
 }
 body{
+  outline: 1px solid;
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -163,6 +168,10 @@ body{
   display: flex;
   justify-content: space-around;
   font-family: 'Indie Flower', cursive;
+    @media screen and (max-width: 450px) {
+      flex-direction: column;
+      overflow: hidden;
+    }
     p {
       width: 40%;
       display: flex;
@@ -174,10 +183,17 @@ body{
       position: absolute;
       top: -10%;
       right: 10%;
+        @media screen and (max-width: 450px) {
+          top: 0;
+          right: -15%;
+        }
     }
     .star{
       opacity: 0;
       animation: stared 4s ease-out 2s forwards;
+        @media screen and (max-width: 450px) {
+          width: 100%;
+        }
     }
   }
   .bg {
