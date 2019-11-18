@@ -52,16 +52,15 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    font-size: 50px;
     cursor: pointer;
     &:hover {
       transform: scale(.95);
     }
   }
   #test {
-    background-image: url('../assets/hand.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+background: radial-gradient(circle, rgba(181,12,12,0) 22%,
+rgba(255,0,147,0.2123126769333743) 51%, rgba(0,0,0,0.5830991937873069) 87%);
   }
 }
 

@@ -22,7 +22,7 @@ export default {
 </script>
 <style lang="scss">
 .wrapper {
-  padding-top: 40px;
+  padding-top: 7%;
   text-align: center;
 }
 @mixin crater($top, $left, $size) {
@@ -156,14 +156,14 @@ export default {
 /////////////////////////////////////////////////
 .toggle-input:checked ~ .toggle-switch {
   margin-left: 0;
+  box-shadow: 0 0 80px red,0 0 30px FireBrick,0 0 6px DarkRed;
   background-image: none;
-  border-color: #DEE1C5;
-  background-color: #FFFDF2;
+border-color:#ff0093;
+background-color:#80004a;
 }
 
 .toggle-input:checked ~ .toggle-bg {
   background-color:black;
-  border-color:rgb(255, 0, 147);
 }
 
 .toggle-input:checked ~ .toggle-switch .toggle-switch-figure {

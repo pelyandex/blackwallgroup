@@ -48,7 +48,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    font-size: 40px;
     cursor: pointer;
     &:hover {
       transform: scale(.95);

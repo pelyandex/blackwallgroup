@@ -161,18 +161,17 @@ body{
   outline: 1px solid;
   padding: 0;
   margin: 0;
-  overflow: hidden;
   #app {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 99%;
   display: flex;
+  overflow: hidden;
   justify-content: space-around;
   font-family: 'Indie Flower', cursive;
     @media screen and (max-width: 450px) {
       flex-direction: column;
-      overflow: hidden;
     }
     p {
       width: 40%;
