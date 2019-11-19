@@ -16,32 +16,28 @@
 
 <script>
 export default {
-  data() {
-    return {
-    cost: 0,
-    timeStart: 0,
-    timeEnd: 0,
-    different: null,
-    boxie: [],
-    };
-  },
-      computed: {
-    //расчет времени
-    minutes() { return Math.floor((this.different % 3600000) / 60000); },
-    seconds() { return Math.floor((this.different % 60000) / 1000); },
-    timeParse() {
-      return (this.minutes < 10 ? '0' + this.minutes : this.minutes) + ":"
-      + (this.seconds < 10 ? '0' + this.seconds : this.seconds);
-    },
-    //расчет крайних координат после каждого хода
-    xcoord() { return this.boxie.indexOf(16); },
-    leftClick() { return this.xcoord - 1; },
-    rightClick() { return this.xcoord + 1; },
-    topClick() { return this.xcoord - 4; },
-    bottomClick() { return this.xcoord + 4; },
-    borders() {return [this.leftClick, this.rightClick,
-     this.topClick, this.bottomClick]}
-  },
+	data() {
+			return {
+			cost: 0,
+			timeStart: 0,
+			timeEnd: 0,
+			different: null,
+			boxie: [],
+			};
+	},
+	computed: {
+		minutes() { return Math.floor((this.different % 3600000) / 60000); },
+		seconds() { return Math.floor((this.different % 60000) / 1000); },
+		timeParse() {
+			return (this.minutes < 10 ? '0' + this.minutes : this.minutes) + ":"
+			+ (this.seconds < 10 ? '0' + this.seconds : this.seconds);
+		},
+		xcoord() { return this.boxie.indexOf(16); },
+		leftClick() { return this.xcoord - 1; },
+		rightClick() { return this.xcoord + 1; },
+		topClick() { return this.xcoord - 4; },
+		bottomClick() { return this.xcoord + 4; },
+	},
   methods: {
     interval() {
       if (!this.cost){
@@ -55,16 +51,14 @@ export default {
     },
     clicked($event) {
       let temp = Number($event.target.id);
-      if (temp !== '16' && temp === this.boxie[this.rightClick] ||
+      if (temp !== 16 && temp === this.boxie[this.rightClick] ||
        temp === this.boxie[this.leftClick] || 
        temp === this.boxie[this.bottomClick] ||
        temp === this.boxie[this.topClick]) {
         let tempArr = this.boxie.concat();
         this.cost = this.cost + 1;
-        /* Используя эту конструкцию я не придумал выноса общих элементов
-        тк в любом случае мне нужна будет проверка условий, (пробовал переборы и методы получал одну строчку экономии)
-        а внутри кв. скобок разные выражения => кроме сокращения названия переменных 
-        я не увидел варианта изменения (уверен, что он есть, но я его не разглядел) */
+				/* Удалось срезать всего одну строчку, но добавить ещё одну в дата.
+				Поэтому решил оставить всё как есть. */
         switch(temp){
           case (tempArr[this.leftClick]):
             tempArr[this.leftClick] = 16;
@@ -130,15 +124,6 @@ export default {
       justify-content: center;
       align-items: center;
       font-size: 45px;
-    }
-    #toggleLight {
-      position: absolute;
-      top: -10%;
-      right: 10%;
-        @media screen and (max-width: 450px) {
-          top: 0;
-          right: -15%;
-        }
     }
     .star{
       opacity: 0;
