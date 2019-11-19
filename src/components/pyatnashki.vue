@@ -66,19 +66,19 @@ export default {
         а внутри кв. скобок разные выражения => кроме сокращения названия переменных 
         я не увидел варианта изменения (уверен, что он есть, но я его не разглядел) */
         switch(temp){
-          case (this.boxie[this.leftClick]):
+          case (tempArr[this.leftClick]):
             tempArr[this.leftClick] = 16;
             tempArr[this.leftClick + 1] = temp;
           break;
-          case(this.boxie[this.rightClick]):
+          case(tempArr[this.rightClick]):
             tempArr[this.rightClick] = 16;
             tempArr[this.rightClick - 1] = temp;
           break;
-          case(this.boxie[this.topClick]):
+          case(tempArr[this.topClick]):
             tempArr[this.topClick] = 16;
             tempArr[this.topClick + 4] = temp;
           break;
-          case(this.boxie[this.bottomClick]):
+          case(tempArr[this.bottomClick]):
             tempArr[this.bottomClick] = 16;
             tempArr[this.bottomClick - 4] = temp;
           break;
@@ -96,8 +96,7 @@ export default {
     },
   },
   mounted() {
-    this.boxie = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-    // .sort(() => Math.random() - 0.5)
+    this.boxie = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].sort(() => Math.random() - 0.5)
   },
 }
 </script>
