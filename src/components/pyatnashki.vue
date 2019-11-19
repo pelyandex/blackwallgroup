@@ -16,77 +16,50 @@
 
 <script>
 export default {
-	data() {
-		return {
-			cost: 0,
-			timeStart: 0,
-			timeEnd: 0,
-			different: null,
-			boxie: [],
-		};
-	},
-	computed: {
-		minutes() { return Math.floor((this.different % 3600000) / 60000); },
-		seconds() { return Math.floor((this.different % 60000) / 1000); },
-		timeParse() {
-			return (this.minutes < 10 ? '0' + this.minutes : this.minutes) + ":"
-			+ (this.seconds < 10 ? '0' + this.seconds : this.seconds);
-		},
-		xcoord() { return this.boxie.indexOf(16); },
-		leftClick() { return this.xcoord - 1; },
-		rightClick() { return this.xcoord + 1; },
-		topClick() { return this.xcoord - 4; },
-		bottomClick() { return this.xcoord + 4; },
-	},
+  data() {
+    return {
+    cost: 0,
+    timeStart: 0,
+    timeEnd: 0,
+    different: null,
+    boxie: [],
+    array: [1, -1, 4, -4]
+    };
+   },
+   computed: {
+     minutes() { return Math.floor((this.different % 3600000) / 60000); },
+     seconds() { return Math.floor((this.different % 60000) / 1000); },
+     timeParse() {
+       return (this.minutes < 10 ? '0' + this.minutes : this.minutes) + ":"
+       + (this.seconds < 10 ? '0' + this.seconds : this.seconds);
+     },
+    },
   methods: {
-    interval() {
-      if (!this.cost){
-        this.timeStart = new Date().getTime();
-        this.timeEnd = new Date().getTime();
-        setInterval(() => {
-          this.timeEnd = new Date().getTime();
-          this.different = this.timeEnd - this.timeStart;
-        }, 1000);
-      }
+     interval() {
+     if (!this.cost){
+       this.timeStart = new Date().getTime();
+       this.timeEnd = new Date().getTime();
+       setInterval(() => {
+         this.timeEnd = new Date().getTime();
+         this.different = this.timeEnd - this.timeStart;
+      }, 1000);
+     }
     },
     clicked($event) {
-      let temp = Number($event.target.id);
-      if (temp !== 16 && temp === this.boxie[this.rightClick] ||
-       temp === this.boxie[this.leftClick] || 
-       temp === this.boxie[this.bottomClick] ||
-       temp === this.boxie[this.topClick]) {
-        let tempArr = this.boxie.concat();
-        this.cost = this.cost + 1;
-/* Удалось срезать всего одну строчку, но добавить ещё одну в дата.
-	Поэтому решил оставить всё как есть. */
-        switch(temp){
-          case (tempArr[this.leftClick]):
-            tempArr[this.leftClick] = 16;
-            tempArr[this.leftClick + 1] = temp;
-          break;
-          case(tempArr[this.rightClick]):
-            tempArr[this.rightClick] = 16;
-            tempArr[this.rightClick - 1] = temp;
-          break;
-          case(tempArr[this.topClick]):
-            tempArr[this.topClick] = 16;
-            tempArr[this.topClick + 4] = temp;
-          break;
-          case(tempArr[this.bottomClick]):
-            tempArr[this.bottomClick] = 16;
-            tempArr[this.bottomClick - 4] = temp;
-          break;
-        }
-        setTimeout(() => {
-          this.boxie = tempArr;
-          this.checkwin();
-        }, 300);
+      const temp = Number($event.target.id);
+      let xcoord = this.boxie.indexOf(16); // индекс дырки в массиве
+      let tempcoord = this.boxie.indexOf(temp); // индекс числа на который кликнул в массиве
+      if (this.array.some((el) => el === tempcoord - xcoord)) { // если разница есть в зарез. массиве
+        let tempArr = this.boxie.concat(); // копирование массива
+        [tempArr[xcoord],tempArr[tempcoord]] = [tempArr[tempcoord], tempArr[xcoord]];// деструктур. присваивание
+        this.boxie = tempArr; // добавление в реактивность
+        this.checkwin(); // проверка условия
       }
     },
     checkwin() {
-        if (this.boxie.every((el,ind,arr) => ind === arr.length - 1 ? el : el + 1 === arr[ind + 1])){
-            alert("You're winner")
-        }
+      if (this.boxie.every((el,ind,arr) => ind === arr.length - 1 ? el : el + 1 === arr[ind + 1])){
+        alert("You're winner");
+      }
     },
   },
   mounted() {
