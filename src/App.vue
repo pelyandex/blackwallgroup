@@ -17,7 +17,6 @@ export default {
 
 <style lang="scss">
   body{
-    outline: 1px solid;
     padding: 0;
     margin: 0;
   }
