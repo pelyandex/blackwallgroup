@@ -17,13 +17,13 @@
 <script>
 export default {
 	data() {
-			return {
+		return {
 			cost: 0,
 			timeStart: 0,
 			timeEnd: 0,
 			different: null,
 			boxie: [],
-			};
+		};
 	},
 	computed: {
 		minutes() { return Math.floor((this.different % 3600000) / 60000); },
@@ -57,8 +57,8 @@ export default {
        temp === this.boxie[this.topClick]) {
         let tempArr = this.boxie.concat();
         this.cost = this.cost + 1;
-				/* Удалось срезать всего одну строчку, но добавить ещё одну в дата.
-				Поэтому решил оставить всё как есть. */
+/* Удалось срезать всего одну строчку, но добавить ещё одну в дата.
+	Поэтому решил оставить всё как есть. */
         switch(temp){
           case (tempArr[this.leftClick]):
             tempArr[this.leftClick] = 16;
