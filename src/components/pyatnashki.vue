@@ -7,7 +7,6 @@
             v-for="item in boxie"
             :class="{hole: item === 16}"
             :key="item"
-            @click.once="interval"
             @click="clicked">{{item === 16 ? '' : item }}</div>
         </transition-group>
       <p class="star">{{timeParse}}</p>
@@ -50,6 +49,8 @@ export default {
       let xcoord = this.boxie.indexOf(16); // индекс дырки в массиве
       let tempcoord = this.boxie.indexOf(temp); // индекс числа на который кликнул в массиве
       if (this.array.some((el) => el === tempcoord - xcoord)) { // если разница есть в зарез. массиве
+        this.interval(); // запуск таймера
+        this.cost = this.cost + 1; // увелич. счетчика
         let tempArr = this.boxie.concat(); // копирование массива
         [tempArr[xcoord],tempArr[tempcoord]] = [tempArr[tempcoord], tempArr[xcoord]];// деструктур. присваивание
         this.boxie = tempArr; // добавление в реактивность
